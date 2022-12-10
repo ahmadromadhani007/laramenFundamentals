@@ -46,9 +46,13 @@ $router->get('/', function () use ($router) {
 // });
 
 // Generate application key
-$router->get('/key', function () {
-    return Str::random(32);
-});
+$router->get('/key', 'ExampleController@generateKey');
+$router->post('/fou', 'ExampleController@fouExample');
+$router->get('/user/{id}', 'ExampleController@getUser');
+$router->get('/post/cat1/{cat1}/cat2/{cat2}', 'ExampleController@getPost');
+
+$router->get('profile', ['as' => 'profile', 'uses' => 'ExampleController@getProfile']);
+$router->get('/profile/action', ['as' => 'profile.action', 'uses' => 'ExampleController@getProfileAction']);
 
 // Basic route parameter
 $router->get('/user/{id}', function ($id) {
@@ -72,13 +76,13 @@ $router->get('/optional/[{param}]', function ($param = null) {
     return $param;
 });
 
-$router->get('profile', function () {
-    return redirect()->route('route.profile');
-});
+// $router->get('profile', function () {
+//     return redirect()->route('route.profile');
+// });
 
-$router->get('profile/santreTanjung', ['as' => 'route.profile', function () {
-    return 'Route SantreTanjung';
-}]);
+// $router->get('profile/santreTanjung', ['as' => 'route.profile', function () {
+//     return 'Route SantreTanjung';
+// }]);
 
 $router->group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => ''], function () use ($router) {
     $router->get('home', function () {
