@@ -54,6 +54,13 @@ $router->get('/post/cat1/{cat1}/cat2/{cat2}', 'ExampleController@getPost');
 $router->get('profile', ['as' => 'profile', 'uses' => 'ExampleController@getProfile']);
 $router->get('/profile/action', ['as' => 'profile.action', 'uses' => 'ExampleController@getProfileAction']);
 
+//REQUEST Handler
+$router->get('foo/bar', 'ExampleController@fooBar');
+$router->post('bar/foo', 'ExampleController@fooBar');
+
+$router->post('user/profile/request', 'ExampleController@userProfile');
+
+
 // Basic route parameter
 $router->get('/user/{id}', function ($id) {
     return 'User id = ' . $id;

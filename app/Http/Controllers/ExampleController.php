@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class ExampleController extends Controller
 {
     /**
@@ -11,7 +13,7 @@ class ExampleController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('age', ['except' => ['getUser']]);
+        // $this->middleware('age', ['except' => ['getUser']]);
     }
 
     public function generateKey()
@@ -44,5 +46,35 @@ class ExampleController extends Controller
         return 'Route Profile : ' . route('profile');
     }
 
-    //
+    public function fooBar(Request $request)
+    {
+        // if ($request->is('foo/bar')) {
+        //     return 'Success';
+        // } else {
+        //     return 'Fail';
+        // }
+        //return $request->path();
+        return $request->method();
+    }
+
+    public function userProfile(Request $request)
+    {
+        // $user['name'] = $request->name;
+        // $user['username'] = $request->username;
+        // $user['email'] = $request->email;
+        // $user['password'] = $request->password;
+
+        // return $user;
+
+        //return $request->all();
+
+        // if ($request->filled(['name', 'email'])) {
+        //     return 'Success';
+        // } else {
+        //     return 'Fail';
+        // }
+
+        //return $request->only(['username', 'password']);
+        return $request->except(['username', 'password']);
+    }
 }
