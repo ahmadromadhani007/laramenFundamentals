@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ExampleController extends Controller
 {
@@ -76,5 +77,11 @@ class ExampleController extends Controller
 
         //return $request->only(['username', 'password']);
         return $request->except(['username', 'password']);
+    }
+
+    public function response()
+    {
+        $data['status'] = 'Success';
+        return (new Response($data, 201));
     }
 }

@@ -59,6 +59,11 @@ $router->get('foo/bar', 'ExampleController@fooBar');
 $router->post('bar/foo', 'ExampleController@fooBar');
 
 $router->post('user/profile/request', 'ExampleController@userProfile');
+$router->get('/response', 'ExampleController@response');
+
+//Authentication Lumen
+$router->post('/register', 'AuthController@register');
+$router->post('/login', 'AuthController@login');
 
 
 // Basic route parameter
