@@ -64,12 +64,13 @@ $router->get('/response', 'ExampleController@response');
 //Authentication Lumen
 $router->post('/register', 'AuthController@register');
 $router->post('/login', 'AuthController@login');
+$router->get('/user/{id}', 'UserController@show');
 
 
 // Basic route parameter
-$router->get('/user/{id}', function ($id) {
-    return 'User id = ' . $id;
-});
+// $router->get('/user/{id}', function ($id) {
+//     return 'User id = ' . $id;
+// });
 
 $router->get('/foo', function () {
     return 'Hellow Heaven, GET Method';
